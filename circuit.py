@@ -147,7 +147,7 @@ def construct_circuit(qlist, parameter, index):
 if __name__ == '__main__':
 
     # set random seed
-    np.random.seed(args.seed)
+    np.random.seed(1234)
 
     # 初始化参数
     data = np.loadtxt('./data.txt')
