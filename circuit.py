@@ -90,6 +90,8 @@ def oneCircuit(qlist, a,b,c,d , theta):
     return vqc
 
 
+
+
 def get_expectation(Hamiltonian_matrix, index, parameter, train=True):
 
     def execute_circ(theta):
@@ -134,7 +136,7 @@ def construct_circuit(qlist, parameter, index):
 
     # 初始化HF态
     for i in range(6):
-        vqc.insert(X(qlist[i]))
+        vqc.insert(X(qlist[6+i]))
 
     # 构造量子线路
     for layer in range(layers):
