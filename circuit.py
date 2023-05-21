@@ -90,8 +90,6 @@ def oneCircuit(qlist, a,b,c,d , theta):
     return vqc
 
 
-
-
 def get_expectation(Hamiltonian_matrix, index, parameter, train=True):
 
     def execute_circ(theta):
@@ -134,11 +132,15 @@ def construct_circuit(qlist, parameter, index):
 
     vqc = QCircuit()
 
+    # 初始化HF态
+    for i in range(6):
+        vqc.insert(X(qlist[i]))
+
     # 构造量子线路
-    for i in range(layers):
+    for layer in range(layers):
         # a,b,c,d = index[i].tolist()
-        d,c,b,a = index[i].tolist()
-        vqc.insert(oneCircuit(qlist, a,b,c,d, parameter[i]))
+        i,j,k,l = index[layer].tolist()
+        vqc.insert(oneCircuit(qlist, l,k,j,i, parameter[layer]))
 
     return vqc
 
@@ -185,7 +187,6 @@ if __name__ == '__main__':
     # 构建量子线路实例
     prog = QProg()
     prog.insert(vqc)
-    # loss = qop(vqc, pauli_H2, machine, qlist)
 
     result = prob_run_list(prog, qlist, -1)
     statevector = np.sqrt(np.array(result))  # vector representation of the output state
@@ -194,6 +195,12 @@ if __name__ == '__main__':
     Pauli_sum = qiskit_problem_PauliOperator(Hamiltonian)
     Hamiltonian_matrix = Pauli_sum.to_matrix()
     loss = statevector @ Hamiltonian_matrix @ statevector
+    np.save("Hamiltonian_matrix.npy", Hamiltonian_matrix)
     assert np.imag(loss) < 1e-10
-
     print(loss)
+
+    # mat = get_unitary(prog)
+
+    # mat = np.array(mat).reshape(2**12, 2**12)
+    # print(mat, mat.shape)
+    # np.save("first_unitary_all.npy", mat)
