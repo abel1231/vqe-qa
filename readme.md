@@ -22,7 +22,7 @@ We use Jordan–Wigner transformation to get the Paili Hamiltonian of $H_6$ and 
 
 To run the code, one should run the script
 ```bash
-python vqnet --layers 20
+python vqnet.py --layers 20
 ```
 where the value of ```--layers``` must be 20, 48 or 65, indicating the number of parameters of the quantum circuit, and also indicating the layer counts of sub-circuits (i,e., singles or doubles ansatz) that need to be stacked to build the entire quantum circuit. A more detailed description is as follows.
 
