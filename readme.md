@@ -1,4 +1,4 @@
-# Pyqpanda implementation of a variational quantum algorithm for finding the ground state energy of the molecule $H_6$
+# PyQPanda implementation of a variational quantum algorithm for finding the ground state energy of the molecule $H_6$
 
 This is the official implementation of the VQE using the [PyQPanda package](https://pyqpanda-toturial.readthedocs.io/zh/latest/) for finding the ground state energy of the molecule $H_6$, whose geometry is given as:
 ```python
