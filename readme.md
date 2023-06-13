@@ -41,3 +41,8 @@ We report the ground state energy results and the running time (16 cores CPU) wh
 | Time(s)             | 186s        | 531s        | 2880s       |
 
 It can be seen that employing fewer layers results in reduced training time while maintaining chemical accuracy. Due to the resonable preprocess that sparcifies of the Hamiltonian matrix for faster convergence, the ground state energy of the 20-layer quantum circuit is noticeably lower than the FCI energy.
+
+We also draw the curves of different quantum circuits for calculating ground state energy as the number of iterations increases
+<p align="center">
+    <img width="60%" src="figure.png">
+</p>
