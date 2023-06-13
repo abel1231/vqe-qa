@@ -12,7 +12,7 @@ geom = "H 1.300000 2.250000 0.000000, \
 whose FCI energy is -2.806471946359929.
 
 ## Requirements
-The code is based on python 3.8 and one can install all the requirement packages by
+The code is based on python 3.8 and one can install all the required packages by
 ```bash
 pip install -r requirements.txt
 ```
