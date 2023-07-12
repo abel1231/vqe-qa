@@ -1,4 +1,3 @@
-
 from pyqpanda import SWAP,QCircuit,QProg,prob_run_list,X,PauliOperator,H,RZ,RX,RY,CNOT,var,init_quantum_machine,QMachineType
 import scipy
 import time
@@ -401,7 +400,9 @@ if __name__ == '__main__':
     # 利用JW变换得到泡利算符形式的氢分子哈密顿量
     # sparse_H = Hamiltonian_from_chemiq()
     sparse_H = scipy.sparse.load_npz("my_Hamiltonian.npz")
-    sparse_H[abs(sparse_H) <= 0.04] = 0
+    if args.layers == 20:
+        print("sparse Hamiltonian.", file=log)
+        sparse_H[abs(sparse_H) <= 0.04] = 0
 
     # 初始化量子虚拟机, 分配量子比特
     num_qubits = 12
@@ -415,9 +416,6 @@ if __name__ == '__main__':
     index = data[:,-4:].astype(int)
     assert len(index) == args.layers, "Error: the number of layers does not match the length of the index file!"
     print('Number of parameters:', index.shape[0], file=log)
-    if args.layers == 20:
-        print("sparse Hamiltonian.")
-        sparse_H[abs(sparse_H) <= 0.04] = 0
 
     ansatz_parameters = []
     delta_e_threshold =  1.6e-3 # 1e-3 for chemical accuracy
